@@ -73,9 +73,7 @@ public class Output {
     }
 
     public enum PneumaticSolenoid {
-        Intake(1, 5),
-        CLAW_OPEN(2,3),
-        CLAW_UP(4,5), ;
+        Intake(1, 5);
 
         public int port1, port2;
         public DoubleSolenoid solenoid;

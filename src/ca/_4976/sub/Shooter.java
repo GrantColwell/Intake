@@ -3,35 +3,41 @@ package ca._4976.sub;
 import ca._4976.io.Controller;
 import ca._4976.io.Input;
 import ca._4976.io.Output;
+import edu.wpi.first.wpilibj.command.WaitCommand;
 
 /**
  * Created by Grant on 1/23/2016.
  */
 public class Shooter {
 
+    boolean IntakeState = true;    // false = down, true = up
+    boolean SHOOTER = false;     // true = 75%, false = golden efficiency
+    double GRIPPER = 0.0;    //true=on' false=off
+
     public void teleopPeriodic() {
 
-        boolean IntakeState = false;    // false = down, true = up
-        boolean SHOOTER = false;     // true = 75%, false = golden efficiency
-        double GRIPPER = 0.0;    //true=on' false=off
 
 
-        if (IntakeState = false) {
-
+        if (IntakeState == false) {
             if (Controller.Primary.Button.B.isDownOnce()) {
 
                 Output.PneumaticSolenoid.Intake.set(true);
                 IntakeState = true;
 
-                if (SHOOTER = false) {
+                System.out.println("The intake is up");
+
+                if (SHOOTER == false) {
 
                     Output.Motor.SHOOTER.set(0.75);
                     SHOOTER = true;
+
+                    System.out.println("The shooter is going");
 
                 } else {
                     Output.Motor.GRIPPER.set(0.3);
 
                     GRIPPER = 0.3;
+                    System.out.println("The gripper is spinning at: "+GRIPPER);
                 }
             }
 
@@ -39,53 +45,62 @@ public class Shooter {
 
                 Output.PneumaticSolenoid.Intake.set(true);
                 IntakeState = true;
+                System.out.println("The intake is up");
             }
 
             if (Controller.Primary.Button.A.isDownOnce()) {
 
                 Output.Motor.GRIPPER.set(0.3);
 
+                System.out.println("The gripper is spinning at: "+GRIPPER);
+
 
             }
-
             if (Input.Digital.BALL_PRESENT.get()){
+          Output.Motor.GRIPPER.set(0.0);
 
-            Output.Motor.GRIPPER.set(0.0);
+               System.out.println("The gripper is not spinning");
 
-            }
+           }
 
         }
-        if (IntakeState = true) {
+        if (IntakeState == true) {
 
-            if (Controller.Primary.Button.B.isDownOnce()) {
+            if (Controller.Primary.Button.A.isDownOnce()) {
 
                 Output.PneumaticSolenoid.Intake.set(false);
                 IntakeState = false;
-                Output.Motor.GRIPPER.set(0.3);
-                GRIPPER = 0.3;
+                System.out.println("The intake is down");
+                Output.Motor.GRIPPER.set(0.0);
+                GRIPPER = 0.0;
+                System.out.println("The gripper is spinning at: "+GRIPPER);
                 Output.Motor.SHOOTER.set(0.0);
                 SHOOTER = false;
+                System.out.println("The shooter is off");
 
             }
 
-            if (Controller.Primary.Button.A.isDownOnce()) {
+            if (Controller.Primary.Button.B.isDownOnce()) {
 
-                if (SHOOTER = true) {
+                if (SHOOTER == true) {
 
                     Output.Motor.GRIPPER.set(0.3);
                     GRIPPER = 0.3;
+                    System.out.println("The gripper is spinning at: "+GRIPPER);
 
-                    if (Input.Digital.BALL_NOT_PRESENT.get()) {
+
+                    if (Input.Digital.BALL_PRESENT.get()==false) {
 
                         Output.Motor.GRIPPER.set(0.0);
                         GRIPPER = 0.0;
-
+                        System.out.println("The gripper is off");
                     }
 
 
                 } else {
                     Output.Motor.SHOOTER.set(0.75);
                     SHOOTER = true;
+                    System.out.println("The shooter is spinning");
                 }
             }
 
@@ -93,8 +108,9 @@ public class Shooter {
 
                 Output.PneumaticSolenoid.Intake.set(false);
                 IntakeState = false;
+                System.out.println("The inatke is down");
+            }
 
             }
         }
     }
-}

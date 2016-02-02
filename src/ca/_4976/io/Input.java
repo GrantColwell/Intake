@@ -7,10 +7,7 @@ import edu.wpi.first.wpilibj.GyroBase;
 public class Input {
 
     public enum Digital {
-        ELEVATOR_GROUND(3),
-        ELEVATOR_TOP(3),
-        BALL_PRESENT(4),
-        BALL_NOT_PRESENT(4);
+        BALL_PRESENT(4);
 
         private DigitalInput di;
 
