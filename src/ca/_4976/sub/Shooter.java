@@ -3,7 +3,7 @@ package ca._4976.sub;
 import ca._4976.io.Controller;
 import ca._4976.io.Input;
 import ca._4976.io.Output;
-import edu.wpi.first.wpilibj.command.WaitCommand;
+
 
 /**
  * Created by Grant on 1/23/2016.
@@ -46,6 +46,7 @@ public class Shooter {
                 Output.PneumaticSolenoid.Intake.set(true);
                 IntakeState = true;
                 System.out.println("The intake is up");
+                Output.PneumaticSolenoid.HOOD.set(true);
             }
 
             if (Controller.Primary.Button.A.isDownOnce()) {
@@ -57,11 +58,11 @@ public class Shooter {
 
             }
             if (Input.Digital.BALL_PRESENT.get()){
-          Output.Motor.GRIPPER.set(0.0);
+                Output.Motor.GRIPPER.set(0.0);
 
-               System.out.println("The gripper is not spinning");
+                System.out.println("The gripper is not spinning");
 
-           }
+            }
 
         }
         if (IntakeState == true) {
@@ -77,6 +78,7 @@ public class Shooter {
                 Output.Motor.SHOOTER.set(0.0);
                 SHOOTER = false;
                 System.out.println("The shooter is off");
+                Output.PneumaticSolenoid.HOOD.set(false);
 
             }
 
@@ -111,6 +113,6 @@ public class Shooter {
                 System.out.println("The inatke is down");
             }
 
-            }
         }
     }
+}
