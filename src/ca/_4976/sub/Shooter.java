@@ -65,7 +65,7 @@ public class Shooter {
             }
 
         }
-        if (IntakeState == true) {
+        if (IntakeState == false) {
 
             if (Controller.Primary.Button.A.isDownOnce()) {
 
@@ -89,14 +89,6 @@ public class Shooter {
                     Output.Motor.GRIPPER.set(0.3);
                     GRIPPER = 0.3;
                     System.out.println("The gripper is spinning at: "+GRIPPER);
-
-
-                    if (Input.Digital.BALL_PRESENT.get()==false) {
-
-                        Output.Motor.GRIPPER.set(0.0);
-                        GRIPPER = 0.0;
-                        System.out.println("The gripper is off");
-                    }
 
 
                 } else {
