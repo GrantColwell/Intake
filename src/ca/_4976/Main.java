@@ -26,7 +26,7 @@ public class Main extends IterativeRobot {
     public void teleopPeriodic() {
        shooter.teleopPeriodic();
 
-        System.out.println(Input.Digital.BALL_PRESENT.get());
+        //System.out.println(Input.Digital.BALL_PRESENT.get());
     }
 
     public void autonomousPeriodic() { }

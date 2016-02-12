@@ -18,11 +18,11 @@ public class Shooter {
 
 
 
-        if (IntakeState == false) {
+        if (IntakeState == true) {
             if (Controller.Primary.Button.B.isDownOnce()) {
 
-                Output.PneumaticSolenoid.Intake.set(true);
-                IntakeState = true;
+                Output.PneumaticSolenoid.Intake.set(false);
+                IntakeState = false;
 
                 System.out.println("The intake is up");
 
@@ -43,8 +43,8 @@ public class Shooter {
 
             if (Controller.Secondary.Button.X.isDownOnce()) {
 
-                Output.PneumaticSolenoid.Intake.set(true);
-                IntakeState = true;
+                Output.PneumaticSolenoid.Intake.set(false);
+                IntakeState = false;
                 System.out.println("The intake is up");
                 Output.PneumaticSolenoid.HOOD.set(true);
             }
@@ -69,8 +69,8 @@ public class Shooter {
 
             if (Controller.Primary.Button.A.isDownOnce()) {
 
-                Output.PneumaticSolenoid.Intake.set(false);
-                IntakeState = false;
+                Output.PneumaticSolenoid.Intake.set(true);
+                IntakeState = true;
                 System.out.println("The intake is down");
                 Output.Motor.GRIPPER.set(0.0);
                 GRIPPER = 0.0;
@@ -108,8 +108,8 @@ public class Shooter {
 
             if (Controller.Secondary.Button.X.isDownOnce()) {
 
-                Output.PneumaticSolenoid.Intake.set(false);
-                IntakeState = false;
+                Output.PneumaticSolenoid.Intake.set(true);
+                IntakeState = true;
                 System.out.println("The inatke is down");
             }
 
