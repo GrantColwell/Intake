@@ -35,8 +35,8 @@ public class Shooter {
                 Output.PneumaticSolenoid.Intake.set(false);
                 IntakeState = false;
                 System.out.println("The intake is up");
-                Output.PneumaticSolenoid.HOOD.set(false);
-                HOOD = false;
+                //Output.PneumaticSolenoid.HOOD.set(false);
+                //HOOD = false;
 
                 if (SHOOTER == false) {
                     Output.Motor.SHOOTER.set(0.75);
@@ -70,8 +70,8 @@ public class Shooter {
                 Output.Motor.SHOOTER.set(0.0);
                 SHOOTER = false;
                 System.out.println("The shooter is off");
-                Output.PneumaticSolenoid.HOOD.set(true);
-                HOOD = true;
+                //Output.PneumaticSolenoid.HOOD.set(true);
+                //HOOD = true;
 
             }
 
