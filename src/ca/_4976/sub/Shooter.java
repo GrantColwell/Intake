@@ -25,7 +25,7 @@ public class Shooter {
                 System.out.println("The gripper is spinning at: "+GRIPPER);
             }
 
-            if (Input.Digital.BALL_PRESENT.get()){
+            if (!Input.Digital.BALL_PRESENT.get()){
                 Output.Motor.GRIPPER.set(0.0);
                 GRIPPER = 0.0;
                 System.out.println("The gripper is not spinning");
